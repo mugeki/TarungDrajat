@@ -1,10 +1,14 @@
-import React from 'react';
+import React, {useEffect} from 'react';
+import {StatusBar} from 'react-native';
+import {Provider} from 'react-redux';
+import store from './src/store/store';
 import {DefaultTheme, Provider as PaperProvider} from 'react-native-paper';
+import Orientation from 'react-native-orientation-locker';
 import {
   NavigationContainer,
   DefaultTheme as NavDefaultTheme,
 } from '@react-navigation/native';
-import BottomNavbar from './src/component/BottomNavbar';
+import BottomNavbar from './src/components/BottomNavbar';
 
 const theme = {
   ...DefaultTheme,
@@ -31,11 +35,17 @@ const navTheme = {
 };
 
 export default function App() {
+  useEffect(() => {
+    Orientation.lockToPortrait();
+  }, []);
+
   return (
-    <PaperProvider theme={theme}>
-      <NavigationContainer theme={navTheme}>
-        <BottomNavbar />
-      </NavigationContainer>
-    </PaperProvider>
+    <Provider store={store}>
+      <PaperProvider theme={theme}>
+        <NavigationContainer theme={navTheme}>
+          <BottomNavbar />
+        </NavigationContainer>
+      </PaperProvider>
+    </Provider>
   );
 }

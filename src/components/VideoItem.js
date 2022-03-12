@@ -5,12 +5,12 @@ import {withTheme} from 'react-native-paper';
 function VideoItem(props) {
   const {colors} = props.theme;
   const navigation = props.navigation;
-  const {title, category, desc} = props.item;
+  const {title, category, description} = props.item;
   return (
     <TouchableOpacity
       style={[styles.container, {borderBottomColor: colors.placeholder}]}
       onPress={() => {
-        navigation.navigate('Video', {...props.item});
+        navigation.navigate('VideoDetail', {...props.item});
       }}>
       <View>
         <Image
@@ -19,7 +19,11 @@ function VideoItem(props) {
             uri: 'https://www.unimed.ac.id/wp-content/uploads/2019/04/Tarung-Derajat.jpg',
           }}
         />
-        <Text style={{color: colors.primary, fontWeight: 'bold'}}>{title}</Text>
+        <Text
+          style={{fontWeight: 'bold', color: colors.primary}}
+          numberOfLines={2}>
+          {title}
+        </Text>
         <Text
           style={{
             color: colors.placeholder,
@@ -27,8 +31,8 @@ function VideoItem(props) {
           }}>
           {category}
         </Text>
-        <Text style={{color: colors.text}} numberOfLines={3}>
-          {desc}
+        <Text style={{color: colors.text}} numberOfLines={2}>
+          {description}
         </Text>
       </View>
     </TouchableOpacity>
