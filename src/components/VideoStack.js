@@ -1,22 +1,22 @@
 import React from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import VideoDetailScreen from './VideoDetailScreen';
-import VideoSearchScreen from './VideoSearchScreen';
-import VideoFullScreen from './VideoFullScreen';
+import MateriDetailScreen from '../screens/MateriDetailScreen';
+import MateriScreen from '../screens/MateriScreen';
+import VideoFullScreen from '../screens/VideoFullScreen';
 
 const Stack = createNativeStackNavigator();
 
-export default function VideoScreen() {
+export default function VideoStack() {
   return (
     <Stack.Navigator initialRouteName="VideoSearch">
       <Stack.Screen
         name="VideoSearch"
-        component={VideoSearchScreen}
+        component={MateriScreen}
         options={{headerShown: false}}
       />
       <Stack.Screen
         name="VideoDetail"
-        component={VideoDetailScreen}
+        component={MateriDetailScreen}
         options={{headerShown: false}}
       />
       <Stack.Screen

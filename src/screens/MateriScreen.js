@@ -21,7 +21,7 @@ import {
 import VideoItem from '../components/VideoItem';
 import firestore from '@react-native-firebase/firestore';
 
-function VideoSearchScreen(props) {
+function MateriScreen(props) {
   const {colors} = props.theme;
   const [visible, setVisible] = useState(false);
   const [loading, setLoading] = useState(true);
@@ -46,6 +46,7 @@ function VideoSearchScreen(props) {
       newVideos.push({...doc.data(), id: doc.id});
       lastKey = doc.data().uploadedAt;
     });
+    if (newVideos.length === 0) setError('Materi tidak ditemukan');
     setVideos(newVideos);
     setLastKey(lastKey);
     setLoading(false);
@@ -140,9 +141,13 @@ function VideoSearchScreen(props) {
       );
     } else {
       return (
-        <Text style={{textAlign: 'center'}}>
-          Semua materi telah ditampilkan
-        </Text>
+        <>
+          {!error && (
+            <Text style={{textAlign: 'center'}}>
+              Semua materi telah ditampilkan
+            </Text>
+          )}
+        </>
       );
     }
   };
@@ -221,11 +226,7 @@ function VideoSearchScreen(props) {
               colors={[colors.primary]}
             />
           }
-          ListEmptyComponent={
-            <Text style={styles.errorText}>
-              {error || 'Materi tidak ditemukan'}
-            </Text>
-          }
+          ListEmptyComponent={<Text style={styles.errorText}>{error}</Text>}
           ListFooterComponent={listFooter}
           ListFooterComponentStyle={{paddingVertical: 20}}
         />
@@ -282,4 +283,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default withTheme(VideoSearchScreen);
+export default withTheme(MateriScreen);

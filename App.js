@@ -1,8 +1,8 @@
 import React, {useEffect} from 'react';
-import {StatusBar} from 'react-native';
 import {Provider} from 'react-redux';
 import store from './src/store/store';
 import {DefaultTheme, Provider as PaperProvider} from 'react-native-paper';
+import SplashScreen from 'react-native-splash-screen';
 import Orientation from 'react-native-orientation-locker';
 import {
   NavigationContainer,

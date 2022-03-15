@@ -5,7 +5,7 @@ import {withTheme} from 'react-native-paper';
 function VideoItem(props) {
   const {colors} = props.theme;
   const navigation = props.navigation;
-  const {title, category, description} = props.item;
+  const {title, thumbUrl, category, description} = props.item;
   return (
     <TouchableOpacity
       style={[styles.container, {borderBottomColor: colors.placeholder}]}
@@ -16,7 +16,7 @@ function VideoItem(props) {
         <Image
           style={styles.img}
           source={{
-            uri: 'https://www.unimed.ac.id/wp-content/uploads/2019/04/Tarung-Derajat.jpg',
+            uri: thumbUrl,
           }}
         />
         <Text

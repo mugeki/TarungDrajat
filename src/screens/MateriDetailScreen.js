@@ -3,9 +3,9 @@ import {View, Text, StatusBar} from 'react-native';
 import {withTheme} from 'react-native-paper';
 import VideoPlayer from 'react-native-video-controls';
 
-function VideoDetailScreen(props) {
+function MateriDetailScreen(props) {
   const {colors} = props.theme;
-  const {title, category, description} = props.route.params;
+  const {title, videoUrl, category, description} = props.route.params;
   const navigation = props.navigation;
 
   return (
@@ -14,7 +14,7 @@ function VideoDetailScreen(props) {
       <View style={{width: '100%', height: 200, alignItems: 'center'}}>
         <VideoPlayer
           source={{
-            uri: 'https://vjs.zencdn.net/v/oceans.mp4',
+            uri: videoUrl,
           }}
           paused={true}
           disableBack={true}
@@ -43,4 +43,4 @@ function VideoDetailScreen(props) {
   );
 }
 
-export default withTheme(VideoDetailScreen);
+export default withTheme(MateriDetailScreen);

@@ -2,7 +2,7 @@ import React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 // import HomeScreen from '../screens/HomeScreen';
-import VideoScreen from '../screens/VideoScreen';
+import VideoStack from './VideoStack';
 import {getFocusedRouteNameFromRoute} from '@react-navigation/native';
 
 const Tab = createBottomTabNavigator();
@@ -23,7 +23,7 @@ export default function BottomNavbar() {
       /> */}
       <Tab.Screen
         name="Materi"
-        component={VideoScreen}
+        component={VideoStack}
         options={({route}) => {
           const routeName =
             getFocusedRouteNameFromRoute(route) ?? 'VideoSearch';
