@@ -11,7 +11,6 @@ function MateriDetailScreen(props) {
   const fullscreen = useSelector(state => state.fullscreen);
   const dispatch = useDispatch();
   const {title, videoUrl, category, description} = props.route.params;
-  // const [fullscreen, setFullScreen] = useState(false);
   const [viewStyle, setViewStyle] = useState({
     width: '100%',
     height: 200,

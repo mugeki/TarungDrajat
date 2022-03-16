@@ -9,9 +9,6 @@ const Tab = createBottomTabNavigator();
 
 export default function BottomNavbar() {
   const fullscreen = useSelector(state => state.fullscreen);
-  useEffect(() => {
-    console.log('fullscreen?', fullscreen);
-  }, [fullscreen]);
   return (
     <Tab.Navigator>
       {/* <Tab.Screen
