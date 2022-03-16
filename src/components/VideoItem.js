@@ -10,7 +10,7 @@ function VideoItem(props) {
     <TouchableOpacity
       style={[styles.container, {borderBottomColor: colors.placeholder}]}
       onPress={() => {
-        navigation.navigate('VideoDetail', {...props.item});
+        navigation.navigate('MateriDetail', {...props.item});
       }}>
       <View>
         <Image

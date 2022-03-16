@@ -2,7 +2,6 @@ import React, {useState, useEffect} from 'react';
 import {
   Dimensions,
   StyleSheet,
-  ScrollView,
   View,
   FlatList,
   Text,

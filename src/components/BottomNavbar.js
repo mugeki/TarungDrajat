@@ -1,13 +1,17 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 // import HomeScreen from '../screens/HomeScreen';
 import VideoStack from './VideoStack';
-import {getFocusedRouteNameFromRoute} from '@react-navigation/native';
+import {useSelector} from 'react-redux';
 
 const Tab = createBottomTabNavigator();
 
 export default function BottomNavbar() {
+  const fullscreen = useSelector(state => state.fullscreen);
+  useEffect(() => {
+    console.log('fullscreen?', fullscreen);
+  }, [fullscreen]);
   return (
     <Tab.Navigator>
       {/* <Tab.Screen
@@ -24,20 +28,15 @@ export default function BottomNavbar() {
       <Tab.Screen
         name="Materi"
         component={VideoStack}
-        options={({route}) => {
-          const routeName =
-            getFocusedRouteNameFromRoute(route) ?? 'VideoSearch';
-          return {
-            tabBarLabel: 'Materi',
-            tabBarIcon: ({color}) => (
-              <Ionicons name="videocam" color={color} size={25} />
-            ),
-            headerShown: false,
-            tabBarHideOnKeyboard: true,
-            tabBarIconStyle: {margin: 0},
-            tabBarStyle:
-              routeName === 'VideoFullScreen' ? {display: 'none'} : {},
-          };
+        options={{
+          tabBarLabel: 'Materi',
+          tabBarIcon: ({color}) => (
+            <Ionicons name="videocam" color={color} size={25} />
+          ),
+          headerShown: false,
+          tabBarHideOnKeyboard: true,
+          tabBarIconStyle: {margin: 0},
+          tabBarStyle: fullscreen ? {display: 'none'} : {},
         }}
       />
     </Tab.Navigator>
